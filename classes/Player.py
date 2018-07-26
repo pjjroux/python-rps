@@ -25,7 +25,7 @@ class Player(object):
             }
             return player_options[player_input]
         except KeyError:
-            print("Player: Invalid player input")
+            raise KeyError('Invalid player input')
 
 
     def win(self):
