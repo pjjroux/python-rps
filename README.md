@@ -36,4 +36,4 @@ Commands
 
 * Working Rock, paper, scissor game played over a match consisting of three rounds with ASCII art displayed after each play. (WIP)
 * Match outcomes logged in a database to build up historic data.
-* COM moves decided by using the hisoric data.
+* COM moves decided by using the historic data.
