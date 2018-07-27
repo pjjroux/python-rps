@@ -20,7 +20,7 @@ We are building the project as part of learning Python 3.
 
 * Run main.py
 ```
-* Commands
+Commands
 > R or ROCK
 > P or PAPER
 > S or SCISSOR
@@ -29,5 +29,5 @@ We are building the project as part of learning Python 3.
 
 ## Authors
 
-[Jaco Roux](https://github.com/pjjroux)
-[Quartus Kok](https://github.com/qkok)
+* [Jaco Roux](https://github.com/pjjroux)
+* [Quartus Kok](https://github.com/qkok)
