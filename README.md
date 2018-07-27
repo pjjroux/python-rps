@@ -24,7 +24,7 @@ Commands
 > R or ROCK
 > P or PAPER
 > S or SCISSOR
-> E or EXIT
+> X or EXIT
 ```
 
 ## Authors
