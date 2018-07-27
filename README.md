@@ -31,3 +31,9 @@ Commands
 
 * [Jaco Roux](https://github.com/pjjroux)
 * [Quartus Kok](https://github.com/qkok)
+
+## Goals
+
+* Working Rock, paper, scissor game played over a match consisting of three rounds with ASCII art displayed after each play. (WIP)
+* Match outcomes logged in a database to build up historic data.
+* COM moves decided by using the hisoric data.
