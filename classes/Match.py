@@ -9,13 +9,20 @@ class Match(object):
 		""" Return a Match object with a round_count of 0 """
 		self.round_count = 0
 
+	def print_initial_gap(self):
+		"""Print blank space when no ASCII art is present"""
+		for i in range(11):
+			print()
+
+		print('---------------------------------------------------------')
+
 	def start_match(self):
 		""" Print welcome message and start first round """
 		self.clear_screen()
 		self.print_start()
+		self.print_initial_gap()
 		self.new_round()
 		self.print_user_input()
-
 
 	def new_round(self):
 		self.round_count += 1

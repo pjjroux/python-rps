@@ -6,22 +6,31 @@ match = Match()
 player = Player()
 com = COM()
 
-try:
-    match_stop = False
-    match.start_match()
+match_stop = False
+match.start_match()
 
-    player_input = input().upper()
+player_input = input().upper()
 
-    player_play = player.get_play(player_input)
-    com_play = com.get_play()
+while player_input != 'X':
+    try:
+        match.clear_screen()
+        match.print_start()
+        player_play = player.get_play(player_input)
+        com_play = com.get_play()
 
-    result = match.get_result(player_play,com_play)
+        result = match.get_result(player_play,com_play)
 
-    if result:
-        player.win()
-    elif not result:
-        com.win()
-    
-    input()
-except Exception as error:
-    print(error)   
+        if result:
+            player.win()
+        elif not result:
+            com.win()
+ 
+        match.new_round()
+        match.print_user_input()
+        player_input = input().upper()
+    except Exception as error:
+        print(error)   
+        match.print_user_input()
+        player_input = input().upper()
+
+input()
