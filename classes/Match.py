@@ -1,97 +1,89 @@
-class Match(object):
-	""" Represents the Match played over three rounds and controls input and output.
+from os import name, system
 
-		round_count: And integer tracking round number
-		match_result: A string representing the match winner (Player/COM)
-	"""
-	
-	def __init__(self):
-		""" Return a Match object with a round_count of 0 """
-		self.round_count = 0
+class Match:
+  """Class handling match logic"""
+  def __init__(self):
+    self.round = 0
+    self.result = ''
 
-	def print_initial_gap(self):
-		"""Print blank space when no ASCII art is present"""
-		for i in range(11):
-			print()
+  def new_round(self):
+    """Starts a new round"""
+    self.round += 1
 
-		print('---------------------------------------------------------')
+  def clear_sceen(self):
+    """Clears the screen"""
+    if name == 'nt':  # Windows
+      system('cls')
+    else:             # Linux/MacOS
+      system('clear')
 
-	def start_match(self):
-		""" Print welcome message and start first round """
-		self.clear_screen()
-		self.print_start()
-		self.print_initial_gap()
-		self.new_round()
-		self.print_user_input()
+  def print_initial_gap(self):
+    """Print blank space when no ASCII art is present"""
+    for i in range(12):
+      print()
+    
+    print('---------------------------------------------------------')
 
-	def new_round(self):
-		self.round_count += 1
+  def __print_content(self, file_name):
+    """Prints the content of a file"""
+    file = open('resources/' + file_name, 'r')
+    art = file.readlines()
 
-	def get_result(self, player_play, com_play):
-		""" Determine outcome of play and return:
+    for line in art:
+      print(line.rstrip('\n'))
 
-		True = Player wins
-		False = COM wins
-		-1    = Draw
-		"""
+  def get_round(self):
+    """Returns the current round number"""
+    return self.round
 
-		rules = {
-			('P','R') : True,
-			('P','S') : False,
-			('R','P') : False,
-			('R','S') : True,
-			('S','P') : True,
-			('S','R') : False
+  def print_banner(self):
+    """Print the game banner"""
+    print('---------------------------------------------------------')
+    print('  Welcome to Super Ultimate Battle Rock Paper Scissors!')
+    print('---------------------------------------------------------')
+
+  def print_play(self, result, user_play, user_wins, com_play, com_wins):
+    """Prints ASCII art for the play"""
+    """Print ASCII art"""
+    print('          USER                           COMPUTER')
+    self.__print_content(user_play + com_play + '.txt')
+    print()
+    print('Winner round #%d: %s' % (self.round, result))
+    print()
+    print('Player wins: ' + str(user_wins))
+    print('Com wins: ' + str(com_wins))
+    print('---------------------------------------------------------')
+
+  def print_end(self, user_wins, com_wins):
+    """Print winner and farewell message"""
+    if (user_wins > com_wins):
+      self.__print_content('PLAYER_WINS.txt')
+    elif (user_wins < com_wins):
+      self.__print_content('COM_WINS.txt')
+    else:
+      self.__print_content('DRAW.txt')
+
+    print()
+    print('---------------------------------------------------------')
+    print('                  Thanks for playing!')
+    print('---------------------------------------------------------')
+
+  def set_result(self, user_play, com_play):
+    """Determine outcome of play"""
+    rules = {
+			('P','R') : 'User',
+			('P','S') : 'Com',
+			('R','P') : 'Com',
+			('R','S') : 'User',
+			('S','P') : 'User',
+			('S','R') : 'Com'
 		}
 
-		if (player_play, com_play) in rules:
-			if rules[(player_play,com_play)]:
-				outcome = 'Player'
-			else:
-				outcome = 'COM'
+    if (user_play, com_play) in rules:
+      self.result = rules[(user_play, com_play)]
+    else:
+      self.result = 'Draw'
 
-			result = rules[(player_play,com_play)]
-		else:
-			outcome = 'DRAW'
-			result = -1
-
-		self.print_play(outcome, player_play, com_play)
-		return result
-
-	def print_user_input(self):
-		print()
-		print('Round:')
-		print()
-		print('R: Rock | P: Paper | S: Scissors | X: Exit')
-
-
-	def print_start(self):
-		print('---------------------------------------------------------')
-		print('  Welcome to Super Ultimate Battle Rock Paper Scissors!')
-		print('---------------------------------------------------------')
-
-	def print_play(self, outcome, player_play, com_play):
-		print()
-		self.print_art(player_play, com_play)
-		print()
-		print('Winner: ' + outcome)
-		print()
-		print('---------------------------------------------------------')
-	
-	def print_art(self, player_play, com_play):
-		print('          PLAYER                         COMPUTER')
-
-		file_name = player_play + com_play + '.txt'
-		file = open('resources/' + file_name, 'r')
-		art = file.readlines()
-
-		for line in art:
-			print(line.rstrip('\n'))
-	
-	def clear_screen(self):
-		import os
-
-		if (os.name == 'nt'):
-			os.system('cls')
-		else:
-			os.system('clear')
+  def get_result(self):
+    """Returns the result"""
+    return self.result

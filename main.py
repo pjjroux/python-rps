@@ -1,36 +1,49 @@
 from classes.Match import Match
-from classes.Player import Player
-from classes.COM import COM
+from classes.User import User
+from classes.Com import Com
 
 match = Match()
-player = Player()
-com = COM()
+user = User()
+com = Com()
 
-match_stop = False
-match.start_match()
+def print_default():
+  """Prints the default play area"""
+  match.clear_sceen()
+  match.print_banner()
 
-player_input = input().upper()
+def start_new_round():
+  """Starts a new round and sets input"""
+  match.new_round()
+  user.set_play()
+  com.set_play()
 
-while player_input != 'X':
-    try:
-        match.clear_screen()
-        match.print_start()
-        player_play = player.get_play(player_input)
-        com_play = com.get_play()
+def main():
+  """Main game loop"""
+  print_default()
+  match.print_initial_gap()
+  start_new_round()
+  print_default()
+  done = False
 
-        result = match.get_result(player_play,com_play)
+  while (user.get_play() != 'X' and not done):
+    match.set_result(user.get_play(), com.get_play())
 
-        if result:
-            player.win()
-        elif not result:
-            com.win()
- 
-        match.new_round()
-        match.print_user_input()
-        player_input = input().upper()
-    except Exception as error:
-        print(error)   
-        match.print_user_input()
-        player_input = input().upper()
+    if match.get_result() == 'User':
+      user.win()
+    elif match.get_result() == 'Com':
+      com.win()
 
-input()
+    match.print_play(match.get_result(), user.get_play(), user.get_wins(), com.get_play(), com.get_wins())
+
+    if match.get_round() == 3:
+      input('[Enter] to continue')
+      done = True
+    else:
+      start_new_round()
+      print_default()
+
+  match.clear_sceen()
+  match.print_end(user.get_wins(), com.get_wins())
+
+main()
+input('[Enter] to quit')
