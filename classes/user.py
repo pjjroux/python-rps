@@ -1,4 +1,4 @@
-from classes.Player import Player
+from classes.player import Player
 
 class User(Player):
   """The logic for the human player"""
