@@ -1,4 +1,4 @@
-from classes.Player import Player
+from classes.player import Player
 from random import choice
 
 class Com(Player):
