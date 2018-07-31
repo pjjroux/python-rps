@@ -35,7 +35,7 @@ def main():
 
     match.print_play(match.get_result(), user.get_play(), user.get_wins(), com.get_play(), com.get_wins())
 
-    if match.get_round() == 3:
+    if match.get_round() == 3 or user.get_wins() == 2 or com.get_wins() == 2:
       input('[Enter] to continue')
       done = True
     else:
