@@ -6,15 +6,11 @@ class User(Player):
     super().__init__()
     self.plays = ['R', 'P', 'S', 'X']
 
-  def __get_input(self):
-    """Prompts the user for input"""
-    return input('R: Rock|P: Paper|S: Scissors|X: Exit\n').upper()
-
   def set_play(self):
     """Gets input from user and sets the current play"""
-    play = self.__get_input()
+    play = input().upper()
 
     while (play not in self.plays):
-        play = self.__get_input()
+        play = input().upper()
     
     self.play = play

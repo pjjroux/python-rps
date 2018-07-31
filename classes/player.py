@@ -19,3 +19,7 @@ class Player:
   def get_wins(self):
     """Return the number of wins"""
     return self.wins
+
+  def reset_wins(self):
+    """Resets the win counter"""
+    self.wins = 0
