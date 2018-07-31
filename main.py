@@ -45,5 +45,12 @@ def main():
   match.clear_sceen()
   match.print_end(user.get_wins(), com.get_wins())
 
-main()
-input('[Enter] to quit')
+match.clear_sceen()
+match.print_banner()
+match.print_initial_gap()
+
+while (input('Start new game [Y/N]\n').upper() != 'N'):
+  main()
+
+match.clear_sceen()
+match.print_farewell()

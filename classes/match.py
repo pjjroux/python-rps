@@ -63,6 +63,8 @@ class Match:
     else:
       self.__print_content('DRAW.txt')
 
+  def print_farewell(self):
+    """Print farewell message"""
     print()
     print('---------------------------------------------------------')
     print('                  Thanks for playing!')
