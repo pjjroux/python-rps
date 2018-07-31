@@ -1,6 +1,6 @@
-from classes.Match import Match
-from classes.User import User
-from classes.Com import Com
+from classes.match import Match
+from classes.user import User
+from classes.com import Com
 
 match = Match()
 user = User()
