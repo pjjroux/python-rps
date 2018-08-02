@@ -29,7 +29,8 @@ class Database:
                 com_result = round_result['Com']
                 winner = round_result['Result'][0]
 
-                cursor.execute("INSERT INTO python_rps (game_id, round, user_play, com_play, winner) VALUES (%s, %s, %s, %s, %s)", (game_id, round_num, user_result, com_result, winner,))
+                cursor.execute("INSERT INTO python_rps (game_id, round, user_play, com_play, winner) VALUES (%s, %s, %s, %s, %s)", 
+                    (game_id, round_num, user_result, com_result, winner,))
                 self.conn.commit()
             
             cursor.close()
@@ -71,3 +72,35 @@ class Database:
             cursor.close()
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)
+    
+    def print_table_structure(self):
+        """Display the table structure"""
+        try:
+            cursor = self.conn.cursor()
+            cursor.execute("""
+                SELECT
+                    TABLE_NAME,
+                    COLUMN_NAME,
+                    DATA_TYPE,
+                    CHARACTER_MAXIMUM_LENGTH
+                FROM
+                    information_schema.COLUMNS
+                WHERE
+                    TABLE_NAME = 'python_rps';
+            """)
+            rows = cursor.fetchall()
+
+            for row in rows:
+                print(row)
+            cursor.close()
+        except (Exception, psycopg2.DatabaseError) as error:
+            print(error)
+        
+        
+        
+        
+        
+        
+        
+        
+      
