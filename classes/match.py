@@ -10,6 +10,7 @@ class Match:
   def save_log(self, user_play, com_play):
     """Saves round to log"""
     tmp_log = {
+      'Round': self.get_round(),
       'User': user_play,
       'Com': com_play,
       'Result': self.get_result()
@@ -30,9 +31,10 @@ class Match:
     return self.round
 
   def reset_rounds(self):
-    """Reset the round counter"""
+    """Reset the round counter and match log"""
     self.round = 0
-
+    self.tmp_log = {}
+    
   def set_result(self, user_play, com_play):
     """Determine outcome of play"""
     rules = {

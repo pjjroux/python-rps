@@ -2,11 +2,13 @@ from classes.match import Match
 from classes.user import User
 from classes.com import Com
 from classes.interface import Interface
+from classes.db import Database
 
 interface = Interface()
 match = Match()
 user = User()
 com = Com()
+db = Database()
 
 def reset():
   """Resets wins and rounds"""
@@ -48,6 +50,9 @@ def main():
     match.save_log(user.get_play(), com.get_play())
 
     if match.get_round() == 3 or user.get_wins() == 2 or com.get_wins() == 2:
+      # Store match data in database
+      db.store_match_data(match.get_log())
+      
       interface.print_continue()
       done = True
     else:
