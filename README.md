@@ -31,10 +31,10 @@ Commands
 > X or EXIT
 ```
 
-![alt text](resources/images/welcome.png "Welcome to Super Ultimate Battle Rock Paper Scissors!")
-![alt text](resources/images/play1.png "User plays rock but then lose to COM's paper")
-![alt text](resources/images/play2.png "COM's rock beats player's scissor!")
-![alt text](resources/images/result.png "It's another WIN for COM!")
+![alt text](https://github.com/pjjroux/python-rps/blob/master/resources/images/welcome.png "Welcome to Super Ultimate Battle Rock Paper Scissors!")
+![alt text](https://github.com/pjjroux/python-rps/blob/master/resources/images/play1.png "User plays rock but then lose to COM's paper")
+![alt text](https://github.com/pjjroux/python-rps/blob/master/resources/images/play2.png "COM's rock beats player's scissor!")
+![alt text](https://github.com/pjjroux/python-rps/blob/master/resources/images/result.png "It's another WIN for COM!")
 
 ## Authors
 
