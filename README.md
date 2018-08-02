@@ -43,8 +43,8 @@ Commands
 
 ## Features
 
-* Working Rock, paper, scissor game played over a match consisting of three rounds with ASCII art displayed after each play. (WIP)
+* Working Rock, paper, scissor game played over a match consisting of three rounds with ASCII art displayed after each play.
 * Match outcomes logged in a database to build up historic data.
 
 ## Goals
-* COM moves decided by using the historic data.
+* COM moves decided by using the historic data. (WIP)
