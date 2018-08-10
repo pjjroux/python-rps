@@ -11,9 +11,9 @@ We are building the project as part of learning Python 3.
 ### Dependencies
 
 * [Python 3](https://www.python.org/)
-* psycopg2:
+* mysql-connector:
     ```
-    pip install psycopg2
+    pip install mysql-connector
     ```
 
 ### Installing

@@ -2,13 +2,13 @@ from classes.match import Match
 from classes.user import User
 from classes.com import Com
 from classes.interface import Interface
-from classes.db import Database
+from classes.api_client import ApiClient
 
 interface = Interface()
 match = Match()
 user = User()
 com = Com()
-db = Database()
+api_client = ApiClient()
 
 def reset():
   """Resets wins and rounds"""
@@ -32,6 +32,7 @@ def main():
   """Main game loop"""
   global match, user, com
 
+  api_client.set_match_key()
   print_default()
   interface.print_initial_gap()
   start_new_round()
@@ -48,16 +49,14 @@ def main():
 
     interface.print_play(match.get_round(), match.get_result(), user.get_play(), user.get_wins(), com.get_play(), com.get_wins())
     match.save_log(user.get_play(), com.get_play())
-
-    if match.get_round() == 3 or user.get_wins() == 2 or com.get_wins() == 2:
-      # Store match data in database
-      db.store_match_data(match.get_log())
-      
-      interface.print_continue()
-      done = True
-    else:
+    
+    if api_client.save_round(match.get_round(), user.get_play(), com.get_play(), match.get_result()[0]):
       start_new_round()
       print_default()
+    else:
+      print('OOoooOo fok nee')
+
+    
 
   interface.clear_screen()
   interface.print_banner()
