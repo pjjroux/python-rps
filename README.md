@@ -15,6 +15,10 @@ We are building the project as part of learning Python 3.
     ```
     pip install mysql-connector
     ```
+* requests:
+    ```
+    pip install requests
+    ```
 
 ### Installing
 
