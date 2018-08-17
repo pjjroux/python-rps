@@ -26,7 +26,7 @@ def start_new_round():
   match.new_round()
   interface.print_input_prompt()
   user.set_play()
-  com.set_play()
+  com.set_play_advanced(api_client.get_match_key())
 
 def main():
   """Main game loop"""
@@ -54,9 +54,7 @@ def main():
       start_new_round()
       print_default()
     else:
-      print('OOoooOo fok nee')
-
-    
+      print('Error saving data - api_client.save_round')
 
   interface.clear_screen()
   interface.print_banner()
