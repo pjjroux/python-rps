@@ -33,6 +33,7 @@ def main():
   global match, user, com
 
   api_client.set_match_key()
+  match.set_round(api_client.get_round())
   print_default()
   interface.print_initial_gap()
   start_new_round()

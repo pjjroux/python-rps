@@ -30,6 +30,10 @@ class Match:
     """Returns the current round number"""
     return self.round
 
+  def set_round(self, round):
+    """Set the round for a returning player"""
+    self.round = int(round)
+
   def reset_rounds(self):
     """Reset the round counter and match log"""
     self.round = 0
