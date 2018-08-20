@@ -47,8 +47,6 @@ Commands
 
 ## Features
 
-* Working Rock, paper, scissor game played over a match consisting of three rounds with ASCII art displayed after each play.
-* Match outcomes logged in a database to build up historic data.
-
-## Goals
-* COM moves decided by using the historic data. (WIP)
+* Working Rock, paper, scissor game with ASCII art displayed after each play.
+* Match outcomes logged in a database using a PHP API to build up historic data.
+* COM moves decided by using the historic data after 10 rounds against the same player.
