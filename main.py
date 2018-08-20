@@ -26,13 +26,14 @@ def start_new_round():
   match.new_round()
   interface.print_input_prompt()
   user.set_play()
-  com.set_play()
+  com.set_play_advanced(api_client.get_match_key())
 
 def main():
   """Main game loop"""
   global match, user, com
 
   api_client.set_match_key()
+  match.set_round(api_client.get_round())
   print_default()
   interface.print_initial_gap()
   start_new_round()
@@ -54,9 +55,7 @@ def main():
       start_new_round()
       print_default()
     else:
-      print('OOoooOo fok nee')
-
-    
+      print('Error saving data - api_client.save_round')
 
   interface.clear_screen()
   interface.print_banner()
